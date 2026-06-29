@@ -1,6 +1,7 @@
 // ============================================
 // src/pages/admin/MenuStock.jsx
 // DIUBAH: Sekarang ada CRUD lengkap (Tambah/Edit/Hapus)
+// + Tambahan field Rating & Reviews
 // ============================================
 
 import React, { useContext, useState } from 'react';
@@ -20,6 +21,8 @@ const MenuFormModal = ({ mode, initialData, onClose, onSave }) => {
     estimated_time: initialData?.estimated_time || '15 min',
     category:       initialData?.category       || 'Nasi',
     ingredients:    initialData?.ingredients?.join(', ') || '',
+    rating:         initialData?.rating         || '',  // 🔥 TAMBAHKAN
+    reviews:        initialData?.reviews        || '',  // 🔥 TAMBAHKAN
   });
   const [imageFile, setImageFile]   = useState(null);
   const [preview,   setPreview]     = useState(null);
@@ -46,7 +49,6 @@ const MenuFormModal = ({ mode, initialData, onClose, onSave }) => {
     setLoading(true);
 
     try {
-      // Kirim sebagai FormData agar bisa include file gambar
       const formData = new FormData();
       Object.entries(form).forEach(([key, val]) => formData.append(key, val));
       if (imageFile) formData.append('image', imageFile);
@@ -135,6 +137,36 @@ const MenuFormModal = ({ mode, initialData, onClose, onSave }) => {
               <input name="estimated_time" value={form.estimated_time} onChange={handleChange}
                 className="w-full border border-gray-200 rounded-xl px-4 py-2.5 focus:ring-2 focus:ring-pink-500 outline-none"
                 placeholder="15 min" />
+            </div>
+          </div>
+
+          {/* 🔥 TAMBAHKAN INI - Rating & Reviews */}
+          <div className="grid grid-cols-2 gap-3">
+            <div>
+              <label className="block text-sm font-medium text-gray-700 mb-1">Rating (0-5)</label>
+              <input 
+                name="rating" 
+                value={form.rating} 
+                onChange={handleChange} 
+                type="number" 
+                min="0" 
+                max="5" 
+                step="0.1"
+                className="w-full border border-gray-200 rounded-xl px-4 py-2.5 focus:ring-2 focus:ring-pink-500 outline-none"
+                placeholder="4.5" 
+              />
+            </div>
+            <div>
+              <label className="block text-sm font-medium text-gray-700 mb-1">Jumlah Review</label>
+              <input 
+                name="reviews" 
+                value={form.reviews} 
+                onChange={handleChange} 
+                type="number" 
+                min="0"
+                className="w-full border border-gray-200 rounded-xl px-4 py-2.5 focus:ring-2 focus:ring-pink-500 outline-none"
+                placeholder="100" 
+              />
             </div>
           </div>
 

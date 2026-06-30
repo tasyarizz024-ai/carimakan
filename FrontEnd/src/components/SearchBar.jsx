@@ -2,19 +2,17 @@
 import React, { useState } from 'react';
 import { FiSearch, FiSliders } from 'react-icons/fi';
 
-const SearchBar = ({ onSearch }) => {
+const SearchBar = ({ onSearch, onFilterClick }) => {
   const [query, setQuery] = useState('');
 
   const handleChange = (e) => {
     const value = e.target.value;
     setQuery(value);
-    // Langsung kirim ke parent saat mengetik
     if (onSearch) onSearch(value);
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // Tetap support submit
   };
 
   return (
@@ -25,13 +23,21 @@ const SearchBar = ({ onSearch }) => {
       <input
         type="text"
         placeholder="Cari makanan favoritmu..."
-        className="w-full bg-white py-3 pl-12 pr-12 rounded-full border border-gray-100 shadow-sm focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all"
+        className="w-full bg-white py-3 pl-12 pr-12 rounded-full border border-gray-100 shadow-sm focus:outline-none focus:ring-2 focus:ring-pink-500 focus:border-transparent transition-all"
         value={query}
         onChange={handleChange}
       />
+      
+      {/* 🔥 TOMBOL FILTER - BISA DI KLIK */}
       <button 
         type="button"
-        className="absolute right-2 p-2 bg-primary text-white rounded-full hover:bg-green-600 transition-colors"
+        onClick={() => {
+          console.log('Filter button clicked!');
+          if (onFilterClick) {
+            onFilterClick();
+          }
+        }}
+        className="absolute right-2 p-2 bg-pink-500 text-white rounded-full hover:bg-pink-600 transition-colors shadow-md cursor-pointer"
       >
         <FiSliders size={16} />
       </button>

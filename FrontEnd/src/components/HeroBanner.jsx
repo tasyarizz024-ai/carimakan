@@ -11,7 +11,7 @@ const HeroBanner = () => {
       title: "Diskon Kilat 50%",
       desc: "Gunakan kode promo DISKON50 untuk menu favoritmu hari ini!",
       img: imgBannerDiskon,
-      bg: "bg-primary",
+      bg: "bg-pink-500",
       gradient: "from-green-600",
       btnText: "Pesan Sekarang",
       btnColor: "text-primary"

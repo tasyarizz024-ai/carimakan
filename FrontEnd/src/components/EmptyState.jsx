@@ -17,7 +17,7 @@ const EmptyState = ({ title, description, buttonText, onButtonClick, icon: Icon 
       {buttonText && (
         <button 
           onClick={onButtonClick || (() => navigate('/'))}
-          className="bg-primary text-white font-semibold py-3 px-8 rounded-full hover:bg-green-600 transition-colors shadow-lg shadow-green-200"
+          className="bg-pink-500 text-white font-semibold py-3 px-8 rounded-full hover:bg-green-600 transition-colors shadow-lg shadow-green-200"
         >
           {buttonText}
         </button>

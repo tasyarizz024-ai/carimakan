@@ -12,6 +12,7 @@ import Dashboard from './pages/admin/Dashboard';
 import Orders from './pages/admin/Orders';
 import MenuStock from './pages/admin/MenuStock';
 import Register from './pages/Register';
+import UserOrders from './pages/UserOrders';
 
 
 function App() {
@@ -26,6 +27,7 @@ function App() {
         <Route path="/profile" element={<Profile />} />
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
+        <Route path="/orders" element={<UserOrders />} />
         
         
         {/* Admin Routes */}

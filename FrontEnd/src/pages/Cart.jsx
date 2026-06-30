@@ -157,7 +157,7 @@ const Cart = () => {
                     <span className="text-sm font-semibold w-4 text-center">{item.quantity}</span>
                     <button 
                       onClick={() => updateQuantity(item.id, 1)}
-                      className="w-6 h-6 rounded-md bg-primary text-white flex items-center justify-center shadow-sm"
+                      className="w-6 h-6 rounded-md bg-pink-500 text-white flex items-center justify-center shadow-sm"
                     >
                       <FiPlus size={14} />
                     </button>
@@ -184,7 +184,7 @@ const Cart = () => {
             />
             <button 
               onClick={handleApplyPromo}
-              className="bg-primary text-white px-4 py-2 rounded-xl text-sm font-bold hover:bg-green-600 transition-colors"
+              className="bg-pink-500 text-white px-4 py-2 rounded-xl text-sm font-bold hover:bg-green-600 transition-colors"
             >
               Gunakan
             </button>
@@ -221,7 +221,7 @@ const Cart = () => {
             onClick={handleCheckout}
             disabled={loading}
             className={`w-full text-white font-bold py-3 rounded-xl shadow-lg shadow-green-200 transition-colors ${
-              loading ? 'bg-gray-400' : 'bg-primary hover:bg-green-600'
+              loading ? 'bg-gray-400' : 'bg-pink-500 hover:bg-green-600'
             }`}
           >
             {loading ? 'Memproses...' : 'Pesan Sekarang'}

@@ -97,3 +97,11 @@ export const dashboardAPI = {
 };
 
 export default api;
+
+
+// ── NOTIFICATION API ────────────────────────────────────────────
+
+export const notificationAPI = {
+  getAll: () => api.get('/api/notifications'),
+  getUnreadCount: () => api.get('/api/notifications/unread-count'),
+};

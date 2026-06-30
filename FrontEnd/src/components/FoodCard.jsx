@@ -64,7 +64,7 @@ const FoodCard = ({ food }) => {
           {food.stock > 0 ? (
             <button 
               onClick={handleAddToCart}
-              className="bg-primary text-white p-2 rounded-full hover:bg-green-600 transition-colors shadow-sm z-10"
+              className="bg-pink-500 text-white p-2 rounded-full hover:bg-green-600 transition-colors shadow-sm z-10"
             >
               <FiPlus size={20} />
             </button>

@@ -17,6 +17,7 @@ const orderRoutes      = require('./routes/orders');
 const categoryRoutes   = require('./routes/categories');
 const dashboardRoutes  = require('./routes/dashboard');
 const registerRoutes   = require('./routes/register');
+const notificationRoutes = require('./routes/notifications');
 
 const app  = express();
 const PORT = process.env.PORT || 5000;
@@ -60,6 +61,7 @@ app.use('/api/orders',     orderRoutes);
 app.use('/api/categories', categoryRoutes);
 app.use('/api/dashboard',  dashboardRoutes);
 app.use('/api/register',   registerRoutes); // 🔥 INI YANG DITAMBAHKAN
+app.use('/api/notifications', notificationRoutes);
 
 // Health check
 app.get('/api/health', (req, res) => {

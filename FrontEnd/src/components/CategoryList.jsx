@@ -10,7 +10,7 @@ const CategoryList = ({ selectedCategory, onSelectCategory }) => {
           onClick={() => onSelectCategory(category.name)}
           className={`flex items-center gap-2 px-4 py-2 rounded-full whitespace-nowrap transition-all shadow-sm ${
             selectedCategory === category.name
-              ? 'bg-primary text-white font-medium'
+              ? 'bg-pink-500 text-white font-medium'
               : 'bg-white text-gray-600 hover:bg-green-50 border border-gray-100'
           }`}
         >

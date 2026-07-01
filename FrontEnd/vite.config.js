@@ -8,23 +8,23 @@ export default defineConfig({
     tailwindcss(),
   ],
   server: {
-    host: true,
-    allowedHosts: 'all',
-    proxy: {
-      '/api': {
-        target: 'https://carimakan-production.up.railway.app',
-        changeOrigin: true,
-        secure: false,
-      },
-      '/uploads': {
-        target: 'https://carimakan-production.up.railway.app',
-        changeOrigin: true,
-        secure: false,
-      }
-    }
+    host: '0.0.0.0',
+    port: 5173,
+    strictPort: true,
+    allowedHosts: [
+      'pacific-purpose-production-0218.up.railway.app',
+      '.railway.app',
+      'localhost'
+    ]
   },
   preview: {
-    host: true,
-    allowedHosts: 'all'
+    host: '0.0.0.0',
+    port: 5173,
+    strictPort: true,
+    allowedHosts: [
+      'pacific-purpose-production-0218.up.railway.app',
+      '.railway.app',
+      'localhost'
+    ]
   }
 })

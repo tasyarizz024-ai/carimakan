@@ -2,11 +2,9 @@
 @import "tailwindcss";
 
 @theme {
-  --color-primary: #EC4899;     /* Pink 500 */
-  --color-primary-light: #F472B6;
-  --color-primary-dark: #DB2777;
-  --color-accent: #F43F5E;      /* Rose 500 */
-  --color-background: #FDF2F8;  /* Pink 50 */
+  --color-primary: #22C55E;
+  --color-accent: #FF6B6B;
+  --color-background: #F8FAFC;
 }
 
 @layer base {

@@ -7,4 +7,24 @@ export default defineConfig({
     react(),
     tailwindcss(),
   ],
+  server: {
+    host: true,
+    allowedHosts: 'all',
+    proxy: {
+      '/api': {
+        target: 'https://carimakan-production.up.railway.app',
+        changeOrigin: true,
+        secure: false,
+      },
+      '/uploads': {
+        target: 'https://carimakan-production.up.railway.app',
+        changeOrigin: true,
+        secure: false,
+      }
+    }
+  },
+  preview: {
+    host: true,
+    allowedHosts: 'all'
+  }
 })

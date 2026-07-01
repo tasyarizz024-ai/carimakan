@@ -8,7 +8,15 @@ const express        = require('express');
 const session        = require('express-session');
 const cors           = require('cors');
 const path           = require('path');
+const fs             = require('fs'); // 🔥 TAMBAHKAN
 const { testConnection } = require('./config/db');
+
+// 🔥 Buat folder uploads otomatis (biar gak error di Railway)
+const uploadDir = path.join(__dirname, 'uploads');
+if (!fs.existsSync(uploadDir)) {
+  fs.mkdirSync(uploadDir, { recursive: true });
+  console.log('📁 Folder uploads dibuat');
+}
 
 // Route imports
 const authRoutes       = require('./routes/auth');
@@ -28,6 +36,8 @@ app.use(cors({
     process.env.FRONTEND_URL || 'http://localhost:5173',
     'http://localhost:3000',
     'http://127.0.0.1:5173',
+    'https://pacific-purpose-production-0218.up.railway.app', // 🔥 TAMBAHKAN
+    'https://carimakan-production.up.railway.app',
   ],
   credentials: true,
   methods: ['GET', 'POST', 'PUT', 'DELETE', 'PATCH', 'OPTIONS'],
@@ -60,7 +70,7 @@ app.use('/api/menus',      menuRoutes);
 app.use('/api/orders',     orderRoutes);
 app.use('/api/categories', categoryRoutes);
 app.use('/api/dashboard',  dashboardRoutes);
-app.use('/api/register',   registerRoutes); // 🔥 INI YANG DITAMBAHKAN
+app.use('/api/register',   registerRoutes);
 app.use('/api/notifications', notificationRoutes);
 
 // Health check
@@ -73,18 +83,19 @@ app.use((req, res) => {
   res.status(404).json({ success: false, message: `Route ${req.method} ${req.path} tidak ditemukan.` });
 });
 
-// Error handler global
-app.use((req, res, next) => {
-  console.error('Unhandled error:', err.message);
-  res.status(500).json({ success: false, message: err.message || 'Server error.' });
+// 🔥 ERROR HANDLER YANG BENAR
+app.use((err, req, res, next) => {
+  console.error('❌ Unhandled error:', err.message);
+  console.error(err.stack);
+  res.status(500).json({ success: false, message: err.message || 'Terjadi kesalahan server.' });
 });
 
 // ── Start ────────────────────────────────────────────────────────
 async function start() {
   await testConnection();
-  app.listen(PORT, () => {
-    console.log(`🚀 Server berjalan di http://localhost:${PORT}`);
-    console.log(`📦 API tersedia di http://localhost:${PORT}/api`);
+  app.listen(PORT, '0.0.0.0', () => { // 🔥 TAMBAHKAN '0.0.0.0'
+    console.log(`🚀 Server berjalan di http://0.0.0.0:${PORT}`);
+    console.log(`📦 API tersedia di http://0.0.0.0:${PORT}/api`);
   });
 }
 

@@ -31,14 +31,9 @@ const app  = express();
 const PORT = process.env.PORT || 5000;
 
 // ── CORS ────────────────────────────────────────────────────────
+// ── CORS ────────────────────────────────────────────────────────
 app.use(cors({
-  origin: [
-    process.env.FRONTEND_URL || 'http://localhost:5173',
-    'http://localhost:3000',
-    'http://127.0.0.1:5173',
-    'https://pacific-purpose-production-0218.up.railway.app', // 🔥 TAMBAHKAN
-    'https://carimakan-production.up.railway.app',
-  ],
+  origin: true, // 🔥 IZINKAN SEMUA DOMAIN (buat testing)
   credentials: true,
   methods: ['GET', 'POST', 'PUT', 'DELETE', 'PATCH', 'OPTIONS'],
   allowedHeaders: ['Content-Type', 'Authorization'],
